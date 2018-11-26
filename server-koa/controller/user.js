@@ -49,7 +49,6 @@ module.exports = {
 		}, function(error) {
 			return -1;
 		});
-		console.log('tmp'.tmp);
 		ctx.body = tmp;
 	},
 	//登录
@@ -89,16 +88,13 @@ module.exports = {
 		ctx.body = res1;
 	},
 	//用户列表
-	async getUser(ctx) {
-		console.log('data', ctx.request.body);
-		if(!data.name) return;　 
+	async getUser(ctx) { 
 		// 注意这里，因为是异步，所以要这样写才可以取到值。
 		var tmp = await sql.query("select * from userInfo;").then(function(result) {
 			res = {
 				code: 200,
 				data: JSON.parse(JSON.stringify(result))
 			};
-			console.log(res);
 			return res;
 		}, function(error) {
 			return -1;
